@@ -73,7 +73,7 @@ var letter;
 // var wordCreate = document.createElement("div");
 var containerElement = document.getElementById("wordContainer");
 // assigns random number
-var rand = Math.floor(Math.random() * countries.length + 1);
+var rand = Math.floor(Math.random() * countries.length);
 // creates random computer input and splits into array
 var computerInput = countries[rand].split("");
 console.log(computerInput);
@@ -93,9 +93,10 @@ function board() {
     wordElement.appendChild(letter);
   }
 }
+
 board();
 
-// Click function
+// Play Function
 var clickFunction = document.addEventListener("keydown", function(event) {
   guess = event.key;
   if (alphabet.includes(guess) === false) {
@@ -126,7 +127,6 @@ function wrongGuess(guess) {
     livesElement.innerHTML = lives;
     guessArray.push(guess);
     allGuess.innerHTML = guessArray;
-    return false;
   }
 }
 
@@ -135,14 +135,13 @@ function guessRight(x) {
   var guessPosition = x;
   guessArray.push(computerInput[x]);
   allGuess.innerHTML = guessArray;
-  answerArray.splice(guessPosition, 1, computerInput[x]);
-  console.log(answerArray);
   var rightGuess = document.getElementById("s" + guessPosition);
   rightGuess.innerHTML = computerInput[x];
 }
 
 function gameOver() {
   if (lives <= 0) {
+    wordElement.innerHTML = "Game Over Comrade";
     console.log("gameover");
   }
 }
