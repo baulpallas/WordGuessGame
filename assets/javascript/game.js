@@ -64,10 +64,11 @@ window.addEventListener("load", event => {
   currentlyPlaying = true;
   return currentlyPlaying;
 });
-
+var guessArray = [];
 // HTML elements
 var livesElement = document.getElementById("lives");
 var wordElement = document.getElementById("Word");
+var allGuess = document.getElementById("guess");
 var letter;
 // var wordCreate = document.createElement("div");
 var containerElement = document.getElementById("wordContainer");
@@ -85,10 +86,10 @@ for (var i = 0; i < computerInput.length; i++) {
 
 // creates spans for each letter
 function board() {
-  for (var i = 0; i < answerArray.length; i++) {
+  for (var i = 0; i < computerInput.length; i++) {
     letter = document.createElement("span");
     letter.id = "s" + i;
-    letter.innerHTML = answerArray[i];
+    letter.innerHTML = "_";
     wordElement.appendChild(letter);
   }
 }
@@ -102,6 +103,7 @@ var clickFunction = document.addEventListener("keydown", function(event) {
   } else {
     iterateGuess(guess);
     wrongGuess(guess);
+    gameOver();
   }
 });
 
@@ -122,6 +124,8 @@ function wrongGuess(guess) {
   if (computerInput.includes(guess) === false) {
     lives--;
     livesElement.innerHTML = lives;
+    guessArray.push(guess);
+    allGuess.innerHTML = guessArray;
     return false;
   }
 }
@@ -129,9 +133,20 @@ function wrongGuess(guess) {
 // when the player guesses right
 function guessRight(x) {
   var guessPosition = x;
+  guessArray.push(computerInput[x]);
+  allGuess.innerHTML = guessArray;
   answerArray.splice(guessPosition, 1, computerInput[x]);
   console.log(answerArray);
   var rightGuess = document.getElementById("s" + guessPosition);
   rightGuess.innerHTML = computerInput[x];
-  wordElement.appendChild(rightGuess);
 }
+
+function gameOver() {
+  if (lives <= 0) {
+    console.log("gameover");
+  }
+}
+
+var reset = document.addEventListener("click", function(event) {
+  lives = 10;
+});

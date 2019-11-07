@@ -9,14 +9,24 @@
   </head>
   <body>
     <div id="directions">
-      Guess the Soviet Union Republic! Press any key to get started
+      <h2>Guess the Soviet Union Republic! Press any key to get started</h2>
     </div>
     <br />
+    <h4>Current Word</h4>
     <div id="wordContainer">
       <div id="Word"></div>
     </div>
     <br /><br />
-    <div class="lives">Lives: <span id="lives">10</span></div>
+    <div id="livesContainer">
+      <div class="lives">Lives: <span id="lives">10</span></div>
+    </div>
+    <br />
+    <div id="guessContainer">
+      <h4>Letters Already Guessed</h4>
+      <div id="guess"></div>
+    </div>
+    <button id="btn">Click here to Try Again</button>
+
     <script src="assets/javascript/game.js"></script>
   </body>
 </html>
