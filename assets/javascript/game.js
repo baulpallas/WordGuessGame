@@ -101,17 +101,34 @@ var check = document.addEventListener("keydown", function(event) {
   if (alphabet.includes(guess) === false) {
     valid = false;
   } else {
-    // checks to see if guess is in word array and iterates up 'correct' or 'misses'
-    if (computerInput.indexOf(guess) >= 0) {
-      guessRight(guess);
-    } else {
-      lives--;
-      livesElement.innerHTML = lives;
-    }
+    iterateGuess(guess);
+    rightOrWrong(guess);
   }
 });
 
+// for loop to determine how many
+function iterateGuess(guess) {
+  for (var i = 0; i < computerInput.length; i++) {
+    if (guess === computerInput[i]) {
+      correct++;
+      console.log(correct);
+      console.log(guess);
+      guessRight(guess);
+    }
+  }
+}
+
+function rightOrWrong(guess) {
+  if (computerInput.includes(guess) === true) {
+  } else {
+    lives--;
+    livesElement.innerHTML = lives;
+    return false;
+  }
+}
+
 // when the player guesses right
+
 function guessRight(x) {
   getAllIndexes(computerInput, x);
   var guessPosition = getAllIndexes(computerInput, x);
@@ -129,21 +146,3 @@ function getAllIndexes(arr, val) {
   for (i = 0; i < arr.length; i++) if (arr[i] === val) duplicateIndexes.push(i);
   return duplicateIndexes;
 }
-// function findDuplicates(duplicate) {
-//   duplicate1 = computerInput.indexOf(duplicate);
-//   duplicate2 = computerInput.indexOf(
-//     duplicate,
-//     computerInput.indexOf(duplicate) + 1
-//   );
-//   duplicate3 = computerInput.indexOf(duplicate, duplicate2 + 1);
-//   console.log(duplicate1);
-//   console.log(duplicate2);
-//   console.log(duplicate3);
-// }
-
-// function gamePlay() {
-//   board();
-//   check();
-// }
-
-// function startRound() {}
