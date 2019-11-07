@@ -87,40 +87,39 @@ for (var i = 0; i < computerInput.length; i++) {
 function board() {
   for (var i = 0; i < answerArray.length; i++) {
     letter = document.createElement("span");
-    letter.id = i;
+    letter.id = "s" + i;
     letter.innerHTML = answerArray[i];
     wordElement.appendChild(letter);
   }
 }
 board();
 
-// listens for user input of key and checks to make sure it is valid (in alphabet array)
-
-var check = document.addEventListener("keydown", function(event) {
+// Click function
+var clickFunction = document.addEventListener("keydown", function(event) {
   guess = event.key;
   if (alphabet.includes(guess) === false) {
     valid = false;
   } else {
     iterateGuess(guess);
-    rightOrWrong(guess);
+    wrongGuess(guess);
   }
 });
 
-// for loop to determine how many
+// for loop to iterate through arrays
 function iterateGuess(guess) {
   for (var i = 0; i < computerInput.length; i++) {
     if (guess === computerInput[i]) {
       correct++;
       console.log(correct);
       console.log(guess);
-      guessRight(guess);
+      guessRight(i);
     }
   }
 }
 
-function rightOrWrong(guess) {
-  if (computerInput.includes(guess) === true) {
-  } else {
+// wrong guess function
+function wrongGuess(guess) {
+  if (computerInput.includes(guess) === false) {
     lives--;
     livesElement.innerHTML = lives;
     return false;
@@ -128,21 +127,11 @@ function rightOrWrong(guess) {
 }
 
 // when the player guesses right
-
 function guessRight(x) {
-  getAllIndexes(computerInput, x);
-  var guessPosition = getAllIndexes(computerInput, x);
-  answerArray.splice(guessPosition, 1, x);
+  var guessPosition = x;
+  answerArray.splice(guessPosition, 1, computerInput[x]);
   console.log(answerArray);
-  var rightGuess = document.getElementById(guessPosition);
-  rightGuess.innerHTML = x;
+  var rightGuess = document.getElementById("s" + guessPosition);
+  rightGuess.innerHTML = computerInput[x];
   wordElement.appendChild(rightGuess);
-}
-
-//finding duplicates
-function getAllIndexes(arr, val) {
-  var duplicateIndexes = [],
-    i;
-  for (i = 0; i < arr.length; i++) if (arr[i] === val) duplicateIndexes.push(i);
-  return duplicateIndexes;
 }
