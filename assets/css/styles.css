@@ -1,0 +1,8 @@
+#wordContainer {
+  display: flex;
+  justify-content: left;
+}
+
+span {
+  margin: 10px;
+}
