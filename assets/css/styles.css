@@ -1,6 +1,117 @@
+@import "compass/css3";
+
+/* Header stuff */
+#brand {
+  font-family: "Bowlby One SC", cursive;
+  font-size: 30px;
+  text-rendering: optimizeLegibility;
+}
+
+/* Body Stuff */
+body {
+  background-image: url(../images/soviet-culture-1980s-35.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%, 100%;
+}
+
+.container {
+  font-family: "Fira Mono", monospace;
+}
+/* Content Stuff */
+#content {
+  background-color: #ccff15;
+  border: 10px black;
+}
+.title-container {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  border-bottom: 2px solid red;
+  padding-bottom: 20px;
+  align-items: center;
+}
+#glitch {
+  font-size: 25px;
+}
+
+@keyframes noise-anim {
+  $steps: 20;
+  @for $i from 0 through $steps {
+    #{percentage($i*(1/$steps))} {
+      clip: rect(random(100) + px, 9999px, random(100) + px, 0);
+    }
+  }
+}
+
+#glitch:after {
+  content: attr(data-text);
+  position: absolute;
+  left: 2px;
+  text-shadow: -1px 0 red;
+  top: 0;
+  color: white;
+  background: black;
+  overflow: hidden;
+  clip: rect(0, 900px, 0, 0);
+  animation: noise-anim 2s infinite linear alternate-reverse;
+}
+
+@keyframes noise-anim-2 {
+  $steps: 20;
+  @for $i from 0 through $steps {
+    #{percentage($i*(1/$steps))} {
+      clip: rect(random(100) + px, 9999px, random(100) + px, 0);
+    }
+  }
+}
+
+#glitch:before {
+  content: attr(data-text);
+  position: absolute;
+  left: -2px;
+  text-shadow: 1px 0 blue;
+  top: 0;
+  color: white;
+  background: black;
+  overflow: hidden;
+  clip: rect(0, 900px, 0, 0);
+  animation: noise-anim-2 3s infinite linear alternate-reverse;
+}
+.soviet-flag {
+  text-align: center;
+  top: 50%;
+}
+
+#directionsContainer {
+  display: flex;
+  justify-content: center;
+}
+
+#directions {
+  text-align: center;
+}
+
+.alerts {
+  margin-bottom: 25px;
+  text-align: center;
+}
+.card {
+  opacity: 0.9;
+  background-color: red;
+  height: 90%;
+  position: fixed;
+}
+.title {
+  text-align: center;
+}
 #wordContainer {
   display: flex;
-  justify-content: left;
+  justify-content: center;
+}
+
+.guessContainer {
+  display: flex;
+  justify-content: center;
 }
 
 span {
