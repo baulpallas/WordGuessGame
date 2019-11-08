@@ -1,11 +1,10 @@
 // toDos: no css, spans fall out of order, no game winning fuctions
 
 // initializing variables
-var currentlyPlaying;
 let guess;
 let guesses = [];
-var wins = 0;
-var lives = 10;
+var wins;
+var lives;
 var correct = 0;
 var valid;
 var createSpan;
@@ -58,8 +57,10 @@ var countries = [
 ];
 
 window.addEventListener("load", event => {
-  currentlyPlaying = true;
-  return currentlyPlaying;
+  console.log("the page has loaded");
+  board();
+  wins = 0;
+  lives = 10;
 });
 var guessArray = [];
 // HTML elements
@@ -91,10 +92,9 @@ function board() {
   }
 }
 
-board();
-
 // Play Function
-var clickFunction = document.addEventListener("keydown", function(event) {
+
+var keydownFunction = function(event) {
   guess = event.key;
   if (alphabet.includes(guess) === false) {
     valid = false;
@@ -103,7 +103,9 @@ var clickFunction = document.addEventListener("keydown", function(event) {
     wrongGuess(guess);
     gameOver();
   }
-});
+};
+
+document.addEventListener("keydown", keydownFunction);
 
 // for loop to iterate through arrays
 function iterateGuess(guess) {
@@ -138,10 +140,12 @@ function guessRight(x) {
 function gameOver() {
   if (lives <= 0) {
     wordElement.innerHTML = "Game Over Comrade";
-    console.log("gameover");
+    document.removeEventListener("keydown", keydownFunction);
   }
 }
 
 var reset = document.addEventListener("click", function(event) {
   lives = 10;
+  board();
+  gameOver();
 });
