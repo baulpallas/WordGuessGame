@@ -56,16 +56,19 @@ var countries = [
   "uzbekistan"
 ];
 
+// Start game at pageload function
 window.addEventListener("load", event => {
   console.log("the page has loaded");
   board();
   wins = 0;
   lives = 10;
 });
+
 var guessArray = [];
 // HTML elements
 var livesElement = document.getElementById("lives");
 var wordElement = document.getElementById("Word");
+var gameOverElement = document.querySelector(".gameOver");
 var allGuess = document.getElementById("guess");
 var letter;
 // var wordCreate = document.createElement("div");
@@ -93,18 +96,16 @@ function board() {
 }
 
 // Play Function
-
 var keydownFunction = function(event) {
   guess = event.key;
-  if (alphabet.includes(guess) === false) {
-    valid = false;
-  } else {
+  if (alphabet.includes(guess) === true) {
     iterateGuess(guess);
     wrongGuess(guess);
     gameOver();
+  } else {
+    console.log("badgu");
   }
 };
-
 document.addEventListener("keydown", keydownFunction);
 
 // for loop to iterate through arrays
@@ -139,13 +140,18 @@ function guessRight(x) {
 // gameover function to reset
 function gameOver() {
   if (lives <= 0) {
-    wordElement.innerHTML = "Game Over Comrade";
+    gameOverElement.innerHTML = "Game Over Comrade";
     document.removeEventListener("keydown", keydownFunction);
   }
 }
 
+// Reset Function
 var reset = document.addEventListener("click", function(event) {
+  console.log(event);
+  for (var i = 0; i < computerInput.length; i++) {
+    var remove = document.getElementById("s" + i);
+    wordElement.removeChild(remove);
+  }
   lives = 10;
   board();
-  gameOver();
 });
