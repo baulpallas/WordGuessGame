@@ -7,9 +7,6 @@ let guesses = [];
 var wins = 0;
 var lives = 10;
 var correct = 0;
-var duplicate1;
-var duplicate2;
-var duplicate3;
 var valid;
 var createSpan;
 var alphabet = [
@@ -113,8 +110,6 @@ function iterateGuess(guess) {
   for (var i = 0; i < computerInput.length; i++) {
     if (guess === computerInput[i]) {
       correct++;
-      console.log(correct);
-      console.log(guess);
       guessRight(i);
     }
   }
@@ -139,6 +134,7 @@ function guessRight(x) {
   rightGuess.innerHTML = computerInput[x];
 }
 
+// gameover function to reset
 function gameOver() {
   if (lives <= 0) {
     wordElement.innerHTML = "Game Over Comrade";
