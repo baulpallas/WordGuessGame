@@ -3,8 +3,8 @@
 // initializing variables
 let guess;
 var guessArray = [];
-var wins;
-var losses;
+var wins = 0;
+var losses = 0;
 var lives;
 var correct = 0;
 var valid;
@@ -67,17 +67,17 @@ console.log(computerSelection);
 
 // Start game at pageload function
 function startRound() {
-  computerPick();
-  board();
+  console.log(computerSelection);
+  console.log(computerInput);
+  computerSelection = computerPick();
+  board(computerSelection);
   // keydownFunction();
-  wins = 0;
   lives = 10;
   guessArray.length = 0;
   document.addEventListener("keydown", keydownFunction);
 }
 
 window.addEventListener("load", event => {
-  debugger;
   startRound();
 });
 
@@ -101,12 +101,13 @@ function computerPick() {
 }
 
 // creates spans for each letter
-function board() {
+function board(computerSelection) {
+  wordElement.innerHTML = "";
   for (var i = 0; i < computerSelection.length; i++) {
     letter = document.createElement("span");
     letter.id = "s" + i;
     letter.innerHTML = "_";
-    wordElement.appendChild(letter);
+    wordElement.append(letter);
   }
 }
 
@@ -140,6 +141,8 @@ function wrongGuess(guess) {
     livesElement.innerHTML = lives;
     guessArray.push(guess);
     allGuess.innerHTML = guessArray;
+    console.log(lives);
+    loss();
   }
 }
 
@@ -156,16 +159,10 @@ function guessRight(x) {
 // Wins function
 
 function win() {
+  console.log(correct);
   if (correct === computerSelection.length) {
     wins++;
     winsElement.innerHTML = wins;
-  }
-}
-
-function loss() {
-  if (lives <= 0) {
-    losses++;
-    lossesElement.innerHTML = losses;
   }
 }
 
@@ -177,19 +174,25 @@ function gameOver() {
   }
   currentlyPlaying = false;
 }
+function loss() {
+  if (lives <= 0) {
+    losses++;
+    lossesElement.innerHTML = losses;
+  }
+}
 
 // Reset Function
 document.getElementById("btn").onclick = function(event) {
-  console.log("event");
-  startRound();
   for (var i = 0; i < computerSelection.length; i++) {
     var remove = document.getElementById("s" + i);
     wordElement.removeChild(remove);
   }
   livesElement.innerHTML = 10;
   guesses = [];
+  correct = 0;
   if (currentlyPlaying === false) {
     gameOverElement.innerHTML = "";
     allGuess.innerHTML = "";
   }
+  startRound();
 };
