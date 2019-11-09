@@ -100,6 +100,16 @@ span {
   display: flex; 
   justify-content: center;  
 }
+/* Lives wins losses board */
+#lives {
+  margin-right: 20px;
+}
+#wins {
+  margin-right: 20px; 
+}
+#losses {
+  margin-right: 20px; 
+}
 
 /* guess board */
 .guessContainer {
