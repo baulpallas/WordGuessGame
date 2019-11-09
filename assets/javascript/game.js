@@ -67,8 +67,8 @@ console.log(computerSelection);
 
 // Start game at pageload function
 function startRound() {
-  board();
   computerPick();
+  board();
   // keydownFunction();
   wins = 0;
   lives = 10;
@@ -77,6 +77,7 @@ function startRound() {
 }
 
 window.addEventListener("load", event => {
+  debugger;
   startRound();
 });
 
@@ -178,7 +179,8 @@ function gameOver() {
 }
 
 // Reset Function
-var reset = document.addEventListener("click", function(event) {
+document.getElementById("btn").onclick = function(event) {
+  console.log("event");
   startRound();
   for (var i = 0; i < computerSelection.length; i++) {
     var remove = document.getElementById("s" + i);
@@ -190,4 +192,4 @@ var reset = document.addEventListener("click", function(event) {
     gameOverElement.innerHTML = "";
     allGuess.innerHTML = "";
   }
-});
+};

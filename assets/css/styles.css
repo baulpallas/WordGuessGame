@@ -1,4 +1,4 @@
-@import "compass/css3";
+/* @import "compass/css3"; */
 
 /* Header stuff */
 #brand {
@@ -39,7 +39,7 @@ body {
 #glitch {
   font-size: 25px;
 }
-
+/* 
 @keyframes noise-anim {
   $steps: 20;
   @for $i from 0 through $steps {
@@ -82,7 +82,7 @@ body {
   overflow: hidden;
   clip: rect(0, 900px, 0, 0);
   animation: noise-anim-2 3s infinite linear alternate-reverse;
-}
+} */
 
 /* End of SCSS */
 .soviet-flag {
@@ -116,12 +116,17 @@ body {
   text-align: center;
 }
 
+
 #gameOver {
   color: red; 
 }
 
 #currentWord {
-  text-decoration:underline; 
+  text-decoration: underline; 
+}
+
+#lettersGuessed {
+  text-decoration: underline; 
 }
 
 /* Hangman Board */
@@ -145,9 +150,13 @@ span {
   float: none; 
   justify-content: center;
 }
+.lives, .wins, .losses {
+  
+}
 #guess {
   text-align: center; 
 }
+
 
 #buttonContainer {
   display: flex; 
