@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Guess the Sovient Union Repbulic!</title>
+    <title> Guess the Sфviet Union Repbulic</title>
     <link rel="stylesheet" href="assets/css/styles.css" type="text/css" />
     <link
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -32,7 +32,7 @@
               <div class="container title-container">
                     
                   <div class="col-3 soviet-flag"><img src="assets/images/Flag-Union-of-Soviet-Socialist-Republics.jpg" alt="flag" width=90px></div>
-                    <div class="col 6 title" ><h2 id="glitch" data-text= "GLITCH">Guess the Soviet Union Republic!</h2></div>
+                    <div class="col 6 title" ><h2 id="glitch" data-text= "GLITCH">Guess the Sфviet Unioл Republic</h2></div>
               
                       <div class="col-3 soviet-flag"><img src="assets/images/Flag-Union-of-Soviet-Socialist-Republics.jpg" alt="flag" width=90px></div>
                 </div>
@@ -43,8 +43,8 @@
           <div  id="directions" class ="col-6"><p>Press any alphabetic key to get started</p></div>
           <div class="col-3"></div>
         </div>
-      <h2 class = 'col-12 alerts' id = "currentWord">Current Word</h2>
-      <h2 class="col-12 alerts gameOver"></h2>
+      <h5 class = 'col-12 alerts' id = "currentWord">Current Word</h5>
+      <h2 id = "gameOver" class="col-12 alerts gameOver"></h2>
       <div class="col-12" id="wordContainer">
         <div id="Word"></div>
       </div>
@@ -60,7 +60,12 @@
         <div id="guess"></div>
       </div>
       <br />
-      <button id="btn">Click here to Try Again</button>
+      <div id = "buttonContainer" class="container">
+        <div class="col-5"></div>
+        <button type="button" id ="btn" class="btn btn-primary btn-sm col-2">Click here to Try Again</button>
+        <div class="col-5"></div>
+      </div>
+      
     </div>
     </div>
     </div>

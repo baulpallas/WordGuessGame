@@ -17,11 +17,15 @@ body {
 .container {
   font-family: "Fira Mono", monospace;
 }
+
 /* Content Stuff */
 #content {
   background-color: #ccff15;
   border: 10px black;
+  height: 90%; 
 }
+
+
 .title-container {
   display: flex;
   justify-content: center;
@@ -30,6 +34,8 @@ body {
   padding-bottom: 20px;
   align-items: center;
 }
+
+/* Atttempted Glitch SCSS */
 #glitch {
   font-size: 25px;
 }
@@ -77,6 +83,8 @@ body {
   clip: rect(0, 900px, 0, 0);
   animation: noise-anim-2 3s infinite linear alternate-reverse;
 }
+
+/* End of SCSS */
 .soviet-flag {
   text-align: center;
   top: 50%;
@@ -91,29 +99,65 @@ body {
   text-align: center;
 }
 
+.card {
+  opacity: 0.9;
+  height: 100%;
+  position: fixed;s
+}
+
+
+/* Titles */
+.title {
+  text-align: center;
+}
+
 .alerts {
   margin-bottom: 25px;
   text-align: center;
 }
-.card {
-  opacity: 0.9;
-  background-color: red;
-  height: 90%;
-  position: fixed;
+
+#gameOver {
+  color: red; 
 }
-.title {
-  text-align: center;
+
+#currentWord {
+  text-decoration:underline; 
 }
+
+/* Hangman Board */
 #wordContainer {
   display: flex;
   justify-content: center;
 }
-
-.guessContainer {
-  display: flex;
-  justify-content: center;
-}
-
 span {
   margin: 10px;
+  color: red; 
 }
+
+#scoreContainer {
+  display: flex; 
+  justify-content: center;  
+}
+
+/* guess board */
+.guessContainer {
+  display: flex;
+  float: none; 
+  justify-content: center;
+}
+#guess {
+  text-align: center; 
+}
+
+#buttonContainer {
+  display: flex; 
+  justify-content: center; 
+}
+
+#btn {
+  font-size: 12px; 
+  background-color: red; 
+  border: none; 
+  color: yellow; 
+}
+

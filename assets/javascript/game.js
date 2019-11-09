@@ -77,7 +77,6 @@ function startRound() {
 }
 
 window.addEventListener("load", event => {
-  console.log("the page has loaded");
   startRound();
 });
 
@@ -172,7 +171,7 @@ function loss() {
 // gameover function to reset
 function gameOver() {
   if (lives <= 0) {
-    gameOverElement.innerHTML = "Game Over Comrade";
+    gameOverElement.innerHTML = "▵ Game Over Comrade ▵";
     document.removeEventListener("keydown", keydownFunction);
   }
   currentlyPlaying = false;
